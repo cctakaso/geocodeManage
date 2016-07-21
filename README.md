@@ -7,7 +7,7 @@ javascript management wrapper module  for google geocode API.
 <html>
 <head>
 <script src="https://maps.googleapis.com/maps/api/js?key=Your google API KEY"></script>
-<script src="/js/geoManage.js"></script>
+<script type="text/javascript" src="js/geoManage.js"></script>
 </head>
 <body>
 <div id="mapCanvas" style="width:100%; height:600px;"></div>
