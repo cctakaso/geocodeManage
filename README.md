@@ -2,6 +2,7 @@
 javascript management wrapper module  for google geocode API. 
 
 ## How to use
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,4 +29,5 @@ javascript management wrapper module  for google geocode API.
 </script>
 </body>
 </html>
-	
+
+```
