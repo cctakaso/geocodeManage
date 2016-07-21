@@ -85,10 +85,10 @@ var geocodeManage = (function() {
   var def_callback_end = function(work) {
     if (work.count_ng > 0) {
       if (work.count_ng_limit >0) {
-        window.alert("マーカー数が多い為、"+work.count_ng_limit+"件の下記住所などで表示できないものがありました。("+work.address_ng_limit+",...)");
+        window.alert("becase too match markers, don't show the address (error count="+work.count_ng_limit+")");
       }
       if (work.count_ng_others >0) {
-        window.alert("緯度経度変換エラー等のため、"+work.count_ng_others+"件の下記住所などで表示できないものがありました。("+work.address_ng_others+",...)");
+        window.alert("can not to show the address when translate to geocode (error count="+work.count_ng_otheres+")");
       }
     }
   }
