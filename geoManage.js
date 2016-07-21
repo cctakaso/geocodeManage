@@ -95,7 +95,7 @@ var geocodeManage = (function() {
   
   var p = geocodeManage.prototype;
   
-  var timerTask = function(task) {
+  var timerTask = function(me, task) {
     if (task.work.count >= task.work.count_all) {
       if (task.work.retry<task.option.retry && task.work.count_ng_limit>0) {
         retryWork(task.addressGroup, task.work);
@@ -118,9 +118,9 @@ var geocodeManage = (function() {
       }
     
       task.work.isRequest = true;
-      geocoder.geocode({'address': address}, function(results, status) {
+      me.geocoder.geocode({'address': address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-          count_ok++;
+          task.work.count_ok++;
           delete task.addressGroup[key];
         } else {
           task.work.count_ng++;
@@ -134,7 +134,7 @@ var geocodeManage = (function() {
           }
           console.info('Geocode was not successful for the following reason: ' + status+"="+address);
         }
-        task.option.callback_one(results, status, map,  key, address);
+        task.option.callback_one(results, status, me.map,  key, address);
         task.work.isRequest = false;
       });
     }
@@ -143,7 +143,8 @@ var geocodeManage = (function() {
   
   p.geocode_start = function(addressGroup, option) {
     var task = initalTask(addressGroup, option);
-    task.timerid = setInterval(function(){timerTask(task)}, task.option.interval);
+    var me = this;
+    task.timerid = setInterval(function(){timerTask(me, task)}, task.option.interval);
     task.id = genUniqId();
     this.tasks[task.id] = task;
     return task.id;
