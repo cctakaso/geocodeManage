@@ -24,7 +24,7 @@ javascript management wrapper module  for google geocode API.
     var geotask = gm.geocode_start(addressGroup, option);
   });
  function my_callback_one(results, status, map key, address) {....}
- function my_callback_end(work) []
+ function my_callback_end(work) {....}
 
 </script>
 </body>
